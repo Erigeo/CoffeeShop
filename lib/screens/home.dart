@@ -1,3 +1,4 @@
+import 'package:coffee_store/components/login_card.dart';
 import 'package:flutter/material.dart';
 
 class Home extends StatefulWidget {
@@ -12,7 +13,7 @@ class _HomeState extends State<Home> {
   String? _password;
   String? _email;
 
-  void _login() {
+  void _login(String email, String password) {
     if (_formKey.currentState!.validate()) {
       _formKey.currentState!.save();
       // add logica da api + navigate
@@ -53,39 +54,7 @@ class _HomeState extends State<Home> {
                           fontFamily: 'Chalkboard'),
                     ),
                     const SizedBox(height: 20),
-                    Form(
-                        key: _formKey,
-                        child: Column(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            TextFormField(
-                              onSaved: (value) => _email = value,
-                              style: const TextStyle(color: Colors.white),
-                              decoration: const InputDecoration(
-                                labelText: 'E-mail',
-                                labelStyle: TextStyle(color: Colors.white),
-                                enabledBorder: UnderlineInputBorder(
-                                    borderSide:
-                                        BorderSide(color: Colors.white)),
-                                focusedBorder: OutlineInputBorder(
-                                    borderSide:
-                                        BorderSide(color: Colors.white)),
-                                floatingLabelBehavior:
-                                    FloatingLabelBehavior.never,
-                              ),
-                            ),
-                            TextFormField(
-                              onSaved: (value) => _password = value,
-                              decoration:
-                                  const InputDecoration(labelText: 'Password'),
-                              obscureText: true,
-                            ),
-                            ElevatedButton(
-                              onPressed: _login,
-                              child: const Text('Entrar'),
-                            ),
-                          ],
-                        ))
+                    LoginCard(formKey: _formKey, onLogin: _login)
                   ]),
             )));
   }
