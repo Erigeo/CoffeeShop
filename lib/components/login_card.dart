@@ -68,14 +68,33 @@ class LoginCard extends StatelessWidget {
                 ),
                 const SizedBox(height: 20),
                 ElevatedButton(
+                  style: ElevatedButton.styleFrom(
+                    padding: const EdgeInsets.symmetric(
+                        horizontal: 50, vertical: 10),
+                    backgroundColor: Colors.white,
+                    shadowColor: Colors.black.withOpacity(0.5),
+                  ),
                   onPressed: () {
                     if (formKey.currentState!.validate()) {
                       formKey.currentState!.save();
                       onLogin(email ?? '', password ?? '');
                     }
                   },
-                  child: const Text('Entrar'),
+                  child: SizedBox(
+                    width: MediaQuery.of(context).size.width *
+                        0.8, // 80% da largura da tela
+                    child: const Center(
+                      child: Text(
+                        'Entrar',
+                        style: TextStyle(
+                            fontSize: 20,
+                            fontWeight: FontWeight.bold,
+                            color: Colors.black),
+                      ),
+                    ),
+                  ),
                 ),
+                const Text('or register here')
               ],
             )));
   }
