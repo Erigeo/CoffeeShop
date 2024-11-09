@@ -1,3 +1,4 @@
+import 'package:coffee_store/screens/register.dart';
 import 'package:flutter/material.dart';
 
 class LoginCard extends StatelessWidget {
@@ -15,10 +16,17 @@ class LoginCard extends StatelessWidget {
     String? email;
     String? password;
 
+    void onClickRedirect() {
+      Navigator.push(
+        context,
+        MaterialPageRoute(builder: (context) => const Register()),
+      );
+    }
+
     return Container(
         padding: const EdgeInsets.all(25),
         decoration: BoxDecoration(
-          color: const Color.fromARGB(255, 238, 238, 238),
+          color: const Color.fromARGB(255, 244, 244, 244),
           borderRadius: BorderRadius.circular(12),
           boxShadow: [
             BoxShadow(
@@ -71,7 +79,7 @@ class LoginCard extends StatelessWidget {
                   style: ElevatedButton.styleFrom(
                     padding: const EdgeInsets.symmetric(
                         horizontal: 50, vertical: 10),
-                    backgroundColor: Colors.white,
+                    backgroundColor: Colors.brown,
                     shadowColor: Colors.black.withOpacity(0.5),
                   ),
                   onPressed: () {
@@ -85,16 +93,26 @@ class LoginCard extends StatelessWidget {
                         0.8, // 80% da largura da tela
                     child: const Center(
                       child: Text(
-                        'Entrar',
+                        'Login',
                         style: TextStyle(
                             fontSize: 20,
                             fontWeight: FontWeight.bold,
-                            color: Colors.black),
+                            color: Colors.white),
                       ),
                     ),
                   ),
                 ),
-                const Text('or register here')
+                const SizedBox(height: 20),
+                GestureDetector(
+                  onTap: onClickRedirect,
+                  child: const Text(
+                    'Create an account',
+                    style: TextStyle(
+                      color: Colors.blue,
+                      //decoration: TextDecoration.underline
+                    ),
+                  ),
+                )
               ],
             )));
   }
