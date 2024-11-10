@@ -37,6 +37,7 @@ class _HomeState extends State<Home> {
               child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
+                    const SizedBox(height: 100),
                     const Text(
                       'Coffee',
                       style: TextStyle(
@@ -53,7 +54,7 @@ class _HomeState extends State<Home> {
                           color: Color.fromARGB(255, 248, 247, 247),
                           fontFamily: 'Chalkboard'),
                     ),
-                    const SizedBox(height: 20),
+                    const SizedBox(height: 50),
                     LoginCard(formKey: _formKey, onLogin: _login)
                   ]),
             )));

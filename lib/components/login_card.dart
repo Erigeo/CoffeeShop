@@ -1,5 +1,7 @@
 import 'package:coffee_store/screens/register.dart';
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 
 class LoginCard extends StatelessWidget {
   final GlobalKey<FormState> formKey;
@@ -77,6 +79,7 @@ class LoginCard extends StatelessWidget {
                 const SizedBox(height: 20),
                 ElevatedButton(
                   style: ElevatedButton.styleFrom(
+                    overlayColor: Colors.grey.withOpacity(0.2),
                     padding: const EdgeInsets.symmetric(
                         horizontal: 50, vertical: 10),
                     backgroundColor: Colors.brown,
@@ -103,14 +106,54 @@ class LoginCard extends StatelessWidget {
                   ),
                 ),
                 const SizedBox(height: 20),
+                const Row(
+                  children: [
+                    Expanded(
+                        child: Divider(
+                      color: Colors.grey,
+                      thickness: 1,
+                    )),
+                    Padding(
+                      padding: EdgeInsets.symmetric(horizontal: 10),
+                      child: Text(
+                        'or sign in with',
+                        style: TextStyle(color: Colors.grey, fontSize: 14),
+                      ),
+                    ),
+                    Expanded(
+                        child: Divider(
+                      color: Colors.grey,
+                      thickness: 1,
+                    )),
+                  ],
+                ),
+                const SizedBox(height: 20),
+                ElevatedButton.icon(
+                  onPressed: () {},
+                  icon: Image.asset('assets/images/image.png',
+                      width: 25, height: 25),
+                  label: const Text(
+                    'Continue with Google',
+                    style: TextStyle(
+                      color: Colors.black,
+                      fontSize: 16,
+                      fontWeight: FontWeight.w500,
+                    ),
+                  ),
+                  style: ElevatedButton.styleFrom(
+                      backgroundColor: Colors.white,
+                      overlayColor: Colors.grey.withOpacity(0.2)),
+                ),
+                const SizedBox(height: 20),
                 GestureDetector(
                   onTap: onClickRedirect,
                   child: const Text(
                     'Create an account',
                     style: TextStyle(
-                      color: Colors.blue,
-                      //decoration: TextDecoration.underline
-                    ),
+                        color: Color.fromARGB(255, 23, 135, 227),
+                        fontWeight: FontWeight.w500
+                        //decoration: TextDecoration.underline
+                        ),
                   ),
                 )
               ],
