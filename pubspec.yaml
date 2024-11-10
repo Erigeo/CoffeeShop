@@ -32,6 +32,8 @@ dependencies:
     sdk: flutter
   go_router: ^14.3.0
 
+  provider: ^6.0.0
+
   font_awesome_flutter: ^10.0.0
   flutter_svg: ^1.0.0
 

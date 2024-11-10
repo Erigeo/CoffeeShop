@@ -1,8 +1,14 @@
+import 'package:coffee_store/providers/coffe_provider.dart';
+import 'package:coffee_store/providers/user_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:coffee_store/routes/app_router.dart';
+import 'package:provider/provider.dart';
 
 void main() {
-  runApp(const CoffeeApp());
+  runApp(MultiProvider(providers: [
+    ChangeNotifierProvider(create: (context) => UserProvider()),
+    ChangeNotifierProvider(create: (context) => CoffeProvider())
+  ], child: const CoffeeApp()));
 }
 
 class CoffeeApp extends StatelessWidget {
