@@ -1,5 +1,9 @@
 import 'package:coffee_store/components/login_card.dart';
+import 'package:coffee_store/models/user.dart';
+import 'package:coffee_store/providers/user_provider.dart';
+import 'package:coffee_store/screens/user_home.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 class Home extends StatefulWidget {
   const Home({super.key});
@@ -10,15 +14,25 @@ class Home extends StatefulWidget {
 
 class _HomeState extends State<Home> {
   final _formKey = GlobalKey<FormState>();
-  String? _password;
-  String? _email;
 
   void _login(String email, String password) {
     if (_formKey.currentState!.validate()) {
       _formKey.currentState!.save();
-      // add logica da api + navigate
-      print('Email: $_email');
-      print('Password: $_password');
+
+      var userProvider = Provider.of<UserProvider>(context, listen: false);
+      User? user = userProvider.authenticateUser(email, password);
+
+      if (user != null) {
+        Navigator.push(
+          context,
+          MaterialPageRoute(builder: (context) => const UserHome()),
+        );
+      } else {
+        ScaffoldMessenger.of(context).showSnackBar(
+          const SnackBar(
+              content: Text('Login failed. Incorrect email or password.')),
+        );
+      }
     }
   }
 

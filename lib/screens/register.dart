@@ -14,10 +14,10 @@ class _RegisterState extends State<Register> {
       title: 'Material App',
       home: Scaffold(
         appBar: AppBar(
-          title: const Text('Material App Bar'),
+          title: const Text('registeeer'),
         ),
         body: const Center(
-          child: Text('Hello World'),
+          child: Text('register '),
         ),
       ),
     );
